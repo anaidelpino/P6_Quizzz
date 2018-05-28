@@ -144,8 +144,6 @@ exports.randomplay = (req, res, next) =>{
     let toBeResolved=[];
     const answer = query.answer || '';
     var lon = 0;
-    let random = Math.floor(Math.random() * lon.length);
-    let a = req.session.quizzes[random];
     
 
     if(req.session.quizzes === undefined){
@@ -157,6 +155,8 @@ exports.randomplay = (req, res, next) =>{
           
 
             lon = req.session.quizzes;
+             let random = Math.floor(Math.random() * lon.length);
+             let a = req.session.quizzes[random];
             
             
             req.session.quizzes.splice(random, 1);
@@ -175,6 +175,8 @@ exports.randomplay = (req, res, next) =>{
             res.render('quizzes/random_none', {score: score});
         }else{
             lon = req.session.quizzes.length;
+             let random = Math.floor(Math.random() * lon.length);
+             let a = req.session.quizzes[random];
             req.session.quizzes.splice(random, 1);
             res.render('quizzes/random_play', {
                 score: req.session.score,
