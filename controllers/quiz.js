@@ -168,8 +168,8 @@ exports.randomplay = (req, res, next) =>{
         .catch(err => console.log(err));
 
     }else{
-        ps = req.session.quizzes;
-        if(ps.length === 0){
+        toBeResolved = req.session.quizzes;
+        if(toBeResolved.length === 0){
             var score = req.session.score;
             
             res.render('quizzes/random_none', {score: score});
