@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const {models} = require("../models");
-
+const Op = Sequelize.Op;
 
 // Autoload the quiz with id equals to :quizId
 exports.load = (req, res, next, quizId) => {
