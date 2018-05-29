@@ -132,7 +132,7 @@ exports.play = (req, res, next) => {
     const {quiz, query} = req;
 
     const answer = query.answer || '';
-
+    
     res.render('quizzes/play', {
         quiz,
         answer
@@ -141,8 +141,8 @@ exports.play = (req, res, next) => {
 //GET /quizzes/randomplay
 exports.randomplay = (req, res, next) =>{
     const {quiz, query} = req;
-    let toBeResolved=[];
-    const answer = query.answer || '';
+    var toBeResolved=[];
+    const answer = query.answer || "";
     var lon = 0;
     
 
@@ -155,8 +155,8 @@ exports.randomplay = (req, res, next) =>{
           
 
             lon = req.session.quizzes;
-             let random = Math.floor(Math.random() * lon.length);
-             let a = req.session.quizzes[random];
+             var random = Math.floor(Math.random() * lon.length);
+             var a = req.session.quizzes[random];
             
             
             req.session.quizzes.splice(random, 1);
@@ -175,8 +175,8 @@ exports.randomplay = (req, res, next) =>{
             res.render('quizzes/random_none', {score: score});
         }else{
             lon = req.session.quizzes.length;
-             let random = Math.floor(Math.random() * lon.length);
-             let a = req.session.quizzes[random];
+             var random = Math.floor(Math.random() * lon);
+             var a = req.session.quizzes[random];
             req.session.quizzes.splice(random, 1);
             res.render('quizzes/random_play', {
                 score: req.session.score,
@@ -190,7 +190,7 @@ exports.randomplay = (req, res, next) =>{
 exports.randomcheck = (req, res, next) => {
     const {quiz, query} = req;
 
-    const answer = query.answer || '';
+    const answer = query.answer || "";
     const result = answer.toLowerCase().trim() === quiz.answer.toLowerCase().trim();
     let score;
     
