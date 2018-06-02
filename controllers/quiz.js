@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 const {models} = require("../models");
 const Op = Sequelize.Op;
 
+
 // Autoload the quiz with id equals to :quizId
 exports.load = (req, res, next, quizId) => {
 
@@ -132,13 +133,13 @@ exports.play = (req, res, next) => {
     const {quiz, query} = req;
 
     const answer = query.answer || '';
-    
+
     res.render('quizzes/play', {
         quiz,
         answer
     });
 };
-//GET /quizzes/randomplay
+///GET /quizzes/randomplay
 exports.randomplay = (req, res, next) =>{
     const {quiz, query} = req;
     var toBeResolved=[];
@@ -192,7 +193,7 @@ exports.randomcheck = (req, res, next) => {
 
     const answer = query.answer || "";
     const result = answer.toLowerCase().trim() === quiz.answer.toLowerCase().trim();
-    let score;
+    var score;
     
     if (result) {
         req.session.score++;
@@ -239,3 +240,4 @@ exports.check = (req, res, next) => {
         answer
     });
 };
+
